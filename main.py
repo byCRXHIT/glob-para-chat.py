@@ -168,4 +168,4 @@ def get_globalChat_id(guild_id):
 
 ###########################################################
 
-bot.run('YOUR_BOT_TOKEN')
+bot.run(YOUR_BOT_TOKEN)
