@@ -1,6 +1,6 @@
 # PARADISE GLOBAL CHAT
 
-**You need:**
+## You need:
 
 Python installed
 
@@ -8,7 +8,7 @@ Know how to use.
 
 discord.py installed
 
-**Use:**
+## Use:
 
 1. Drag the file into a folder
 
