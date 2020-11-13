@@ -1,6 +1,6 @@
 # PARADISE GLOBAL CHAT
 
-You need:
+**You need:**
 
 Python installed
 
