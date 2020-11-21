@@ -1,10 +1,9 @@
+import asyncio
 import json
 import os
 from datetime import datetime
 from discord.ext.commands import Bot
 from discord.ext import commands
-import asyncio
-
 import discord
 import pytz
 from discord import Message, Guild, TextChannel, Permissions
@@ -13,17 +12,27 @@ from discord.ext import commands
 bot = commands.Bot(command_prefix=';')
 
 if os.path.isfile("servers.json"):
-    with open('servers.json', encoding='utf-8') as f:
+    with open('../../Desktop/pybot/pybot6/servers.json', encoding='utf-8') as f:
         servers = json.load(f)
 else:
     servers = {"servers": []}
-    with open('servers.json', 'w') as f:
+    with open('../../Desktop/pybot/pybot6/servers.json', 'w') as f:
         json.dump(servers, f, indent=4)
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Streaming(name="Use ;addGlobal", url='https://twitch.tv/officialcryhitx'))
     print('Logged in!')
+    bot.loop.create_task(status_task())
+
+
+async def status_task():
+    while True:
+        await bot.change_presence(activity=discord.Game('https://fakect.tk'), status=discord.Status.online)
+        await asyncio.sleep(5)
+        await bot.change_presence(activity=discord.Game('https://bit.ly/fakect'), status=discord.Status.online)
+        await asyncio.sleep(5)
+        await bot.change_presence(activity=discord.Streaming(name="Codet by: byCRXHIT", url='https://twitch.tv/officialcryhitx'))
+        await asyncio.sleep(5)
 
 @bot.command()
 async def addGlobal(ctx):
@@ -35,7 +44,7 @@ async def addGlobal(ctx):
                 "invite": f'{(await ctx.channel.create_invite()).url}'
             }
             servers["servers"].append(server)
-            with open('servers.json', 'w') as f:
+            with open('../../Desktop/pybot/pybot6/servers.json', 'w') as f:
                 json.dump(servers, f, indent=4)
             embed = discord.Embed(title="**Welcome in the GlobalChat from the Paradise™**",
                                   description="Your server is now ready!"
@@ -58,7 +67,7 @@ async def removeGlobal(ctx):
             globalid = get_globalChat_id(ctx.guild.id)
             if globalid != -1:
                 servers["servers"].pop(globalid)
-                with open('servers.json', 'w') as f:
+                with open('../../Desktop/pybot/pybot6/servers.json', 'w') as f:
                     json.dump(servers, f, indent=4)
             embed = discord.Embed(title="**We'll hope wel'll see you again!**",
                                   description="The GlobalChat got removed."
