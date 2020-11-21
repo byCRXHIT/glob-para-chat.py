@@ -12,11 +12,11 @@ from discord.ext import commands
 bot = commands.Bot(command_prefix=';')
 
 if os.path.isfile("servers.json"):
-    with open('PATH/servers.json', encoding='utf-8') as f:
+    with open('servers.json', encoding='utf-8') as f:
         servers = json.load(f)
 else:
     servers = {"servers": []}
-    with open('PATH/servers.json', 'w') as f:
+    with open('servers.json', 'w') as f:
         json.dump(servers, f, indent=4)
 
 @bot.event
