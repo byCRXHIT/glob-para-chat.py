@@ -58,28 +58,6 @@ async def addGlobal(ctx):
                                   color=0x2ecc71)
             await ctx.send(embed=embed)
 
-
-@bot.command()
-async def removeGlobal(ctx):
-    if ctx.member.guild_permissions.administrator:
-        if guild_exists(ctx.guild.id):
-            globalid = get_globalChat_id(ctx.guild.id)
-            if globalid != -1:
-                servers["servers"].pop(globalid)
-                with open('servers.json', 'w') as f:
-                    json.dump(servers, f, indent=4)
-            embed = discord.Embed(title="**See you again!**",
-                                  description="The GlobalChat got removed."
-                                              " with `;addGlobal` you can add the chat back.",
-                                  color=0x2ecc71)
-            await ctx.send(embed=embed)
-        else:
-            embed = discord.Embed(description="You don't have an GlobalChat channel in your server.\r\n"
-                                              "Add one with `;addGlobal`.",
-                                  color=0x2ecc71)
-            await ctx.send(embed=embed)
-
-
 #########################################
 
 @bot.event
