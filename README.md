@@ -15,3 +15,9 @@ discord.py installed
 2. Add your token (last line)
 
 3. Start it over your IDE or open the file.
+
+## Soon:
+
+- Remove the Global Chat over a command
+
+- Roles like: Owner, VIP, Admin etc..
